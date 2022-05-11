@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
+
+:root{
+    --backgorund-page: #114787;
+    --color-focusHover: #1160c0;
+}
+
+body{
+    background-color: var(--backgorund-page);
+    font-family: 'Raleway', sans-serif;
+}
+
+.container{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 25vh;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+}
+
+.container .container__letters{
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container__letters h1{
+    font-size: 250px;
+    margin: 0;
+}
+
+.container__letters h3{
+    font-size: 100px;
+    margin: 0;
+}
+
+.container__form-UserName{
+    background-color: #EBEBEB;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 18px;
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+.container__form-UserName h4{
+    text-align: center;
+    font-size: 25px;
+}
+
+.container__form-inputsMessage label{
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.container__form-input{ position: relative; }
+
+.container__form-input input{
+    width: 85%;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    border: 3px solid rgb(218, 213, 213);
+    transition: all .3s ease;
+}
+
+.container__form-input input:focus{
+    border: 3px solid var(--color-focusHover);
+    outline: none;
+}
+
+.container__fomr-validacion-estado{
+    position: absolute;
+    top: 45%;
+    right: 8%;
+}
+
+.container__form-message{
+    width: 80%;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.container__form-btn{ 
+    text-align: center;
+    padding: 30px 0;
+}
+
+.container__form-btn a{
+    text-decoration: none;
+    padding: 15px 30px;
+    background-color: var(--backgorund-page);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.container__form-btn a:hover{
+    background-color: var(--color-focusHover);
+}
