@@ -1,30 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
 :root{
-    --backgorund-page: #114787;
-    --color-focusHover: #1160c0;
+    --backgorund-page: rgb(17, 71, 135);
+    --color-focusHover: rgb(17, 96, 192);
+    --color-invalid: rgb(177, 6, 6);
+    --color-valid: rgb(15, 148, 15);
+    --color-circle: rgb(24, 113, 9);
+    --size-circle: 800px;
 }
 
 body{
     background-color: var(--backgorund-page);
     font-family: 'Raleway', sans-serif;
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
 .container{
-    width: 95%;
     margin: 0 auto;
-    margin-top: 25vh;
+    padding-top: 20vh;
     display: grid;
     grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 565px;
+    align-items: center;
 }
 
 .container .container__letters{
     color: #fff;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .container__letters h1{
@@ -39,6 +43,7 @@ body{
 
 .container__form-UserName{
     background-color: #EBEBEB;
+    height: 525px;
     width: 80%;
     margin: 0 auto;
     font-size: 18px;
@@ -51,6 +56,8 @@ body{
     font-size: 25px;
 }
 
+.container__form-inputsMessage{ margin-bottom: 30px; }
+
 .container__form-inputsMessage label{
     font-weight: 700;
     cursor: pointer;
@@ -58,8 +65,9 @@ body{
 
 .container__form-input{ position: relative; }
 
+
 .container__form-input input{
-    width: 85%;
+    width: 90%;
     height: 40px;
     line-height: 40px;
     border-radius: 10px;
@@ -74,21 +82,47 @@ body{
     outline: none;
 }
 
+/*?--------------------------------------*/
+
+.container__form-input-valid i{
+    color: var(--color-valid);
+    opacity: 1;
+}
+
+.container__form-input-valid input{
+    border: 3px solid var(--color-valid);
+}
+
+.container__form-input-invalid i{
+    color: var(--color-invalid);
+    opacity: 1;
+}
+
+.container__form-input-invalid input{
+    border: 3px solid var(--color-invalid);
+}
+
+/*?--------------------------------------*/
+
 .container__fomr-validacion-estado{
     position: absolute;
     top: 45%;
-    right: 8%;
+    right: 5%;
+    opacity: 1;
 }
 
 .container__form-message{
-    width: 80%;
+    width: 90%;
     margin-left: 10px;
     font-weight: 500;
+    display: block;
 }
+
+.container__form-message-activo{ display: block; }
 
 .container__form-btn{ 
     text-align: center;
-    padding: 30px 0;
+    padding: 20px 0;
 }
 
 .container__form-btn a{
@@ -103,3 +137,31 @@ body{
 .container__form-btn a:hover{
     background-color: var(--color-focusHover);
 }
+
+.circle-one, 
+.circle-two{
+    border-radius: 50%;
+    background-color: var(--color-circle);
+    
+}
+
+.circle-one{
+    position: fixed;
+    width: var(--size-circle);
+    height: var(--size-circle);
+    left: -200px;
+    bottom: -200px;
+    z-index: -1;
+}
+
+.circle-two{
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: 100px;
+    left: 900px;
+    z-index: -1;
+}
+
+/*? AGREGAR LOS MEDIA QUERY*/
+
