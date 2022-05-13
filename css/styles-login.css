@@ -29,6 +29,7 @@ body{
 .container .container__letters{
     color: #fff;
     text-align: center;
+    padding: 20px;
 }
 
 .container__letters h1{
@@ -165,3 +166,55 @@ body{
 
 /*? AGREGAR LOS MEDIA QUERY*/
 
+@media (max-width: 1545px){
+
+    .container__letters h1{ font-size: 180px; }
+
+    .container__letters h3{ font-size: 80px; }
+
+}
+
+@media (max-width: 1200px){
+
+    .container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px auto;
+        padding: 5vh;
+    }
+
+    .container__letters h1{ font-size: 150px; }
+
+    .container__letters h3{ font-size: 60px; }
+
+    .container__form{ padding: 50px 0; }
+
+    .circle-one{ width: 600px; height: 600px; bottom: -100px; }
+
+    .circle-two{ top: -100px; left: 650px; }
+}
+
+@media (max-width: 620px){
+
+    .container__letters h1{ font-size: 110px; }
+
+    .container__letters h3{ font-size: 60px; }
+
+    .container__form-input{ width: 90%; }
+
+    .container{ padding: 0.1px; }
+
+    .circle-one{ width: 600px; height: 600px; bottom: -100px; }
+
+    .circle-two{ top: -100px; left: 300px; }
+}
+
+@media (max-width: 549px){
+
+    .container__form-form{ margin-bottom: 20px; }
+
+    .container__form-UserName{ height: 550px;  font-size: 16px; }
+
+    .circle-one{ width: 600px; height: 600px; }
+
+    .circle-two{ top: -100px; left: 200px; }
+}
