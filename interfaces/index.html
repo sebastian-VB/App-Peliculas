@@ -26,22 +26,22 @@
                 <h4>Registrar datos</h4>
                 <form class="container__form-form" id="form">
 
-                    <div class="container__form-inputsMessage">
+                    <div class="container__form-inputsMessage" id="group-user">
                         <label for="user">Usuario</label>
                         <div class="container__form-input">
                             <input type="text" name="user" id="user" placeholder="Escriba su usuario">
                             <i class="container__fomr-validacion-estado fas fa-times-circle"></i>
                         </div>
-                        <p class="container__form-message ">
+                        <p class="container__form-message">
                             Se permiten letras (a-z), números (0-9) y símbolos (- _ / #),
                             cadena mayor a 5 caracteres
                         </p>
                     </div>
 
-                    <div class="container__form-inputsMessage">
-                        <label for="nameU">Nombre</label>
+                    <div class="container__form-inputsMessage" id="group-nameP">
+                        <label for="nameP">Nombre</label>
                         <div class="container__form-input">
-                            <input type="text" name="nameU" id="nameU" placeholder="Escriba nombre y apellido">
+                            <input type="text" name="nameP" id="nameP" placeholder="Escriba nombre y apellido">
                             <i class="container__fomr-validacion-estado fas fa-times-circle"></i>
                         </div>
                         <p class="container__form-message">
@@ -49,7 +49,7 @@
                         </p>
                     </div>
                    <div class="container__form-btn">
-                       <a href="#">Ingresar</a>
+                       <a id="btn-next" class="form-btn">Ingresar</a>
                    </div>
 
                 </form>
@@ -59,6 +59,7 @@
 
     </div>
     
+    <script src="js/login.js" type="module"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
 </body>
