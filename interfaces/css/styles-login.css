@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
 :root{
-    --backgorund-page: rgb(17, 71, 135);
+    --backgorund-page: rgb(3, 43, 80);
     --color-focusHover: rgb(17, 96, 192);
     --color-invalid: rgb(177, 6, 6);
     --color-valid: rgb(15, 148, 15);

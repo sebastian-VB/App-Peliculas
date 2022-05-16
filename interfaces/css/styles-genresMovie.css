@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
+
+:root{
+    --background-blue: rgb(3, 43, 80);
+}
+
+h1, h2, h3, h4{
+    margin: 0;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+.header{
+    background-color: var(--background-blue);
+    color: #fff;
+    height: 100px;
+}
+
+.header__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    height: inherit;
+}
+
+.header__container-title,
+.header__container-infoUser{
+    display: flex;
+    align-items: end;
+}
+
+.header__container-infoUser{ position: relative;}
+
+.header__container-title h1{ font-size: 55px; }
+
+.header__container-title h4{
+    font-size: 20px;
+    font-weight: 400;
+    padding-bottom: 8px;
+    margin-left: 10px;
+}
+
+.header__avatarCircle{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #2A9AEB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__infor{
+    position: absolute;
+    background-color: rgb(212, 214, 216);
+    border-radius: 10px;
+    width: 260px;
+    padding: 10px;
+    color: #000;
+    left: -200px;
+    top: 80px;
+    opacity: 0;
+    transition: transform .4s .1s, opacity .5s;
+}
+
+.header__avatarCircle:hover + .header__infor{
+    opacity: 1;
+    transform: translateY(15px);
+}
+
+.header__infor h2{
+    font-size: 18px;
+}
+
+.header__infor h4{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+
+
