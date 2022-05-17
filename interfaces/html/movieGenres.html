@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset-style.css">
+    <link rel="stylesheet" href="../css/styleHeader.css">
     <link rel="stylesheet" href="../css/styles-genresMovie.css">
     <title>Genres</title>
 </head>
@@ -22,12 +23,12 @@
             <div class="header__container-infoUser">
 
                 <div class="header__avatarCircle">
-                    <h1>S</h1>
+                    <h1 id="lettersAvatar">NP</h1>
                 </div>
 
                 <div class="header__infor">
-                    <h2>Sebastián Velásquez Briceño</h2>
-                    <h4>sebas22_peru</h4>
+                    <h2 id="namePerson">Nombre persona</h2>
+                    <h4 id="userPerson">usuario persona</h4>
                 </div>
 
             </div>
@@ -38,8 +39,25 @@
 
     <main class="main">
 
+        <h1 class="main__subtitle">Géneros de películas</h1>
+
+        <section class="main__cards">
+
+            <div class="main__card">
+                <div class="main__card-genre">
+                    Acción
+                </div>
+                <div class="main__card-layer">
+                    <img src="../img/bxs-movie.svg">
+                    <p>Ver ahora</p>
+                </div>
+            </div>
+
+        </section>
 
     </main>
+
+    <script src="../js/genresMovie.js" type="module"></script>
 
 </body>
 </html>
