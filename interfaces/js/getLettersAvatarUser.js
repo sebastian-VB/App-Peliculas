@@ -3,8 +3,8 @@ import { getData, personInfo } from "../../data/session/local-storage.js";
 
 getData();
 
-export function getLettersName(){
-
+function getLettersName(){
+    
     let letters = '';
     let namePerson = personInfo.nameP;
     let indexSpace = 0;
@@ -27,4 +27,7 @@ export function getLettersName(){
     return letters.toUpperCase();
 }
 
-export const person = personInfo;
+export const objectInfo = {
+    getLettersName: getLettersName,
+    personInfo: personInfo,
+};
