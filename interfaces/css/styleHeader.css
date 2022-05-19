@@ -17,6 +17,7 @@ body{
     background-color: var(--background-blue);
     color: #fff;
     height: 100px;
+    width: 100%;
 }
 
 .header__container{
@@ -81,4 +82,25 @@ body{
 .header__infor h4{
     font-weight: 500;
     font-size: 16px;
+}
+
+@media (max-width: 1100px){
+
+    .header__container{ padding: 0 20px; }
+
+    .header__container-title h1{ font-size: 45px; }
+
+    .header__container-title h4 { font-size: 15px; }
+
+    .header__avatarCircle{ width: 55px; height: 55px;}
+
+    .header__infor{ top: 65px;}
+
+    .header__infor h2{ font-size: 15px;}
+
+    .header__infor h4{ font-size: 13px;}
+}
+
+@media (max-width: 500px){
+
 }
