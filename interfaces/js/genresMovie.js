@@ -1,8 +1,11 @@
 
 import { objectInfo } from "./getLettersAvatarUser.js";
-import {objectInfoAPI} from "../../data/api/consumeApiTMDB.js";
+import {objectInfoAPI} from "../../data/connection/consumeApiTMDB.js";
+import {colorsCard, colorLetter} from "./other/colors.js";
 
 window.selectGenre = selectGenre;
+
+let index = 0;
 
 function loadInfo (){
     showInfoHeader();
@@ -28,8 +31,8 @@ function selectGenre (idGM){
 const showGenresMovies = ()=>{
 
     let genres = `
-        <div class="main__card">
-            <div class="main__card-genre">
+        <div class="main__card" style="background-color: ${colorsCard[0]};">
+            <div class="main__card-genre" style="color: ${colorLetter}">
                 Todos
             </div>
             <div class="main__card-layer" id="btnAll" onclick="selectGenre(${1})">
@@ -40,12 +43,13 @@ const showGenresMovies = ()=>{
     `;
 
     objectInfoAPI.dataGenres.forEach(genre => {
+        index++;
         genres += `
-        <div class="main__card">
-            <div class="main__card-genre">
+        <div class="main__card" style="background-color: ${colorsCard[index]};">
+            <div class="main__card-genre" style="color: ${colorLetter}">
                 ${genre.name}
             </div>
-            <div class="main__card-layer" id="btnGenres" onclick="selectGenre(${genre.id})" >
+            <div class="main__card-layer" id="btnGenres" onclick="selectGenre(${genre.id})">
                 <img src="../img/bxs-movie.svg">
                 <p>Ver ahora</p>
             </div>
