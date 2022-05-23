@@ -1,6 +1,8 @@
 
 const partURL = 'https://api.themoviedb.org/3/';
+
 let data;
+let dataListM;
 
 const loadingGenresMovies = async ()=>{
 
@@ -19,6 +21,24 @@ const loadingGenresMovies = async ()=>{
 
 await loadingGenresMovies();
 
+const getListMovies = async() =>{
+
+    try{
+        const answer = await fetch(`${partURL}movie/popular?api_key=3d06cb63991df2c2b2e0c31ec5c593bc&language=es-ES&page=1`);
+        
+        if(answer.status == 200){
+            dataListM = await answer.json();
+        }
+
+    }
+    catch(error){
+
+    }
+}
+
+await getListMovies();
+
 export const objectInfoAPI = {
     dataGenres: data.genres,
+    dataListMovie: dataListM.results,
 }
