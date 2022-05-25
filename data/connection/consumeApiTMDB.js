@@ -11,32 +11,50 @@ const loadingGenresMovies = async ()=>{
         
         if(answer.status == 200){
             data = await answer.json();
+        }
+        else if(answer.status == 401){
+            console.log('error en la peticion');
+        }   
+        else if(answer.status == 404){
+            console.log('generos no existen');
         }   
     }
     catch(error){
-
+        console.log(error);
     }
 
 }
 
 await loadingGenresMovies();
 
-const getListMovies = async() =>{
+export async function getListMovies (page){
 
     try{
-        const answer = await fetch(`${partURL}movie/popular?api_key=3d06cb63991df2c2b2e0c31ec5c593bc&language=es-ES&page=1`);
+        const answer = await fetch(`${partURL}movie/popular?api_key=3d06cb63991df2c2b2e0c31ec5c593bc&language=es-ES&page=${page}`);
         
         if(answer.status == 200){
-            dataListM = await answer.json();
+            return dataListM = await answer.json();
+        }
+        else if(answer.status == 401){
+            console.log('error en la peticion');
+            return null;
+        }
+        else if(answer.status == 404){
+            console.log('pelicula no existe');
+            return null;
+        }
+        else{
+            return null;
         }
 
     }
     catch(error){
-
+        console.log(error);
     }
+
 }
 
-await getListMovies();
+await getListMovies(1);
 
 export const objectInfoAPI = {
     dataGenres: data.genres,

@@ -1,15 +1,20 @@
 
 import { objectInfo } from "./getLettersAvatarUser.js";
-import {objectInfoAPI} from "../../data/connection/consumeApiTMDB.js";
+import {objectInfoAPI, getListMovies} from "../../data/connection/consumeApiTMDB.js";
 
 let imageURL = `https://www.themoviedb.org/t/p/w220_and_h330_face/`;
+// let arrayPrube = [];
+let pages = 1;
+let dataLM;
+
+loadInfo();
 
 function loadInfo(){
     showInfoHeader();
-    showListMovie();
+    showListMovie(objectInfoAPI.dataListMovie);
 }
 
-const showInfoHeader = ()=>{
+function showInfoHeader () {
 
     document.getElementById('namePerson').innerHTML = objectInfo.personInfo.nameP;
     document.getElementById('userPerson').innerHTML = objectInfo.personInfo.userP;
@@ -18,11 +23,31 @@ const showInfoHeader = ()=>{
     
 }
 
-const showListMovie = ()=>{
+document.getElementById('btn-s').addEventListener('click', async ()=>{
+    if(pages < 1000){
+        pages++;
+        dataLM = await getListMovies(pages);
+        if(dataLM != null){
+            showListMovie(dataLM.results);
+        }
+    }
+});
+
+document.getElementById('btn-a').addEventListener('click', async()=>{
+    if(pages > 1){
+        pages--;
+        dataLM = await getListMovies(pages);
+        if(dataLM != null){
+            showListMovie(dataLM.results); 
+        }
+    }
+    
+});
+
+function showListMovie (movieList){
 
     let movies = '';
-
-    objectInfoAPI.dataListMovie.forEach(movie =>{
+    movieList.forEach(movie =>{
         movies += `
         <div class="main__container-card">
             <figure class="main__container-card-picture">
@@ -39,6 +64,16 @@ const showListMovie = ()=>{
     document.getElementById('container-movies').innerHTML = movies;
 }
 
-console.log(objectInfoAPI.dataListMovie);
 
-loadInfo();
+
+// objectInfoAPI.dataListMovie.forEach(movie =>{
+    
+//     movie.genre_ids.forEach(id =>{
+//         if(id == 28){
+//             arrayPrube.push(movie);
+//         }
+//     })
+// });
+
+// console.log(objectInfoAPI.dataListMovie);
+// console.log(arrayPrube);

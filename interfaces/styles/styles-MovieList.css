@@ -81,30 +81,34 @@ h1, h2, h3, h4, p, figure{
 
 .main__container-btn{
     text-align: center;
-    height: 80px;
+    height: 50px;
     position: fixed;
-    top: 85%;
+    top: 50%;
     width: 100%;
 }
 
 .main__container-btn .main__btn{
-    width: 30%;
+    width: 100%;
     height: inherit;
     display: flex;
-    justify-content: space-around;
-    background-color: #032B50;
-    border-radius: 20px;
+    justify-content: space-between;
+    align-content: center;
     margin: 0 auto;
+    padding: 0 10px;
 }
 
-.main__btn-AS{
-    border: none;
+.main__btn-A, .main__btn-S{
     background: none;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 700;
+    border: none;
+    width: 50px;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.main__btn-A{ background-image: url('../img/icons/left-arraw.svg'); }
+.main__btn-S{ background-image: url('../img/icons/right-arraw.svg'); }
+
 
 
 .footer, .footer__container{ display: flex; align-items: center; }
