@@ -1,17 +1,29 @@
 
 import { objectInfo } from "./getLettersAvatarUser.js";
 import {objectInfoAPI, getListMovies} from "../../data/connection/consumeApiTMDB.js";
+import {getGenre} from "./other/genre.js";
 
 let imageURL = `https://www.themoviedb.org/t/p/w220_and_h330_face/`;
-// let arrayPrube = [];
+let arrayMovieGenre = [];
 let pages = 1;
 let dataLM;
 
-loadInfo();
+let sizeTotalArray, sizePage = 20, newSizeArray, index = 0, maxIndex = 0;
+let arrayMovieAux = [];
 
-function loadInfo(){
+await loadInfo();
+
+async function loadInfo(){
     showInfoHeader();
-    showListMovie(objectInfoAPI.dataListMovie);
+
+    if(getGenre().id == 1){
+        document.getElementById('genreTitle').innerHTML = `Género: ${getGenre().name}`;
+        showListMovie(objectInfoAPI.dataListMovie);
+    }
+    else if(getGenre().id != 1){
+        document.getElementById('genreTitle').innerHTML = `Género: ${getGenre().name}`;
+        await listMovieGenre();
+    }
 }
 
 function showInfoHeader () {
@@ -24,25 +36,87 @@ function showInfoHeader () {
 }
 
 document.getElementById('btn-s').addEventListener('click', async ()=>{
-    if(pages < 1000){
-        pages++;
-        dataLM = await getListMovies(pages);
-        if(dataLM != null){
-            showListMovie(dataLM.results);
+    if(getGenre().id == 1){
+        if(pages < 500){
+            pages++;
+            dataLM = await getListMovies(pages);
+            if(dataLM != null){
+                showListMovie(dataLM.results);
+            }
         }
+    }
+    else if(getGenre().id != 1){
+        showNextMovies()
     }
 });
 
 document.getElementById('btn-a').addEventListener('click', async()=>{
-    if(pages > 1){
-        pages--;
-        dataLM = await getListMovies(pages);
-        if(dataLM != null){
-            showListMovie(dataLM.results); 
+    if(getGenre().id == 1){
+        if(pages > 1){
+            pages--;
+            dataLM = await getListMovies(pages);
+            if(dataLM != null){
+                showListMovie(dataLM.results); 
+            }
         }
     }
-    
+    else if(getGenre().id != 1){
+        showPreviousMovies();
+    }
 });
+
+async function listMovieGenre(){
+    console.log(getGenre());
+    let page = 1;
+    let data;
+    while(page <= 500){
+        data = await getListMovies(page);
+        data.results.forEach(movie =>{
+            movie.genre_ids.forEach(id =>{
+                if(id == getGenre().id){
+                    arrayMovieGenre.push(movie);
+                }
+            })
+        });
+        page++;
+    }
+
+    console.log(arrayMovieGenre);
+    sizeTotalArray = arrayMovieGenre.length;
+    newSizeArray = sizeTotalArray;
+    showNextMovies();
+}
+
+function showNextMovies(){
+    
+    newSizeArray -= sizePage;
+    if(newSizeArray > 0){
+        if(sizePage > newSizeArray){
+            sizePage = newSizeArray;
+        }
+        arrayMovieAux = [];
+        for(let i = 0; i<sizePage; i++){
+            arrayMovieAux.push(arrayMovieGenre[index]);
+            index++;
+        }
+        showListMovie(arrayMovieAux);
+    }
+}
+
+function showPreviousMovies(){
+
+    maxIndex = index;
+    index -= 20;
+    if(index >= 0){
+        arrayMovieAux = [];
+        for(let i = index; i<maxIndex; i++){
+            arrayMovieAux.push(arrayMovieGenre[i]);
+        }
+        showListMovie(arrayMovieAux);
+    }
+
+    console.log(arrayMovieAux);
+}
 
 function showListMovie (movieList){
 
@@ -65,15 +139,3 @@ function showListMovie (movieList){
 }
 
 
-
-// objectInfoAPI.dataListMovie.forEach(movie =>{
-    
-//     movie.genre_ids.forEach(id =>{
-//         if(id == 28){
-//             arrayPrube.push(movie);
-//         }
-//     })
-// });
-
-// console.log(objectInfoAPI.dataListMovie);
-// console.log(arrayPrube);

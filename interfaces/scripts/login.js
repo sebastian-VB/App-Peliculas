@@ -52,7 +52,7 @@ document.getElementById('btn-next').addEventListener('click', ()=>{
     if(formu['user'].value !== '' && formu['nameP'].value !== ''){
         
         saveData(formu['user'].value, formu['nameP'].value);
-        location.assign('./html/movieGenres.html');
+        location.assign('./public/movieGenres.html');
     }
 
 });

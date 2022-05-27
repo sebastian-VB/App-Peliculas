@@ -23,6 +23,12 @@ h1, h2, h3, h4, p, figure{
     grid-gap: 25px;
 }
 
+.main .main__genre-title{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 35px;
+}
+
 .main__container-card{
     width: 250px;
     height: 400px;
