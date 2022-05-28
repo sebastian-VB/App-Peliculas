@@ -32,7 +32,7 @@ function selectGenre (idGM){
         if(genre.id == idGM){
             console.log(`${idGM}: ${genre.name}`);
             saveGenre(genre.id, genre.name);
-            // location.assign('../public/moviesList.html');
+            location.assign('../public/moviesList.html');
         }
     });
 }
