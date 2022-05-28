@@ -9,6 +9,7 @@ let pages = 1;
 let dataLM;
 
 let sizeTotalArray, sizePage = 20, newSizeArray, index = 0, maxIndex = 0;
+let btn = '';
 let arrayMovieAux = [];
 
 await loadInfo();
@@ -46,7 +47,10 @@ document.getElementById('btn-s').addEventListener('click', async ()=>{
         }
     }
     else if(getGenre().id != 1){
-        showNextMovies()
+        if(btn == 'btnP'){
+            index += 20;
+        }
+        showNextMovies();
     }
 });
 
@@ -61,6 +65,9 @@ document.getElementById('btn-a').addEventListener('click', async()=>{
         }
     }
     else if(getGenre().id != 1){
+        if(btn == 'btnN'){
+            index -= 20;
+        }
         showPreviousMovies();
     }
 });
@@ -101,21 +108,25 @@ function showNextMovies(){
         }
         showListMovie(arrayMovieAux);
     }
+    btn = 'btnN';
+    // console.log(`INDX: ${index}`);
 }
 
 function showPreviousMovies(){
 
     maxIndex = index;
-    index -= 20;
-    if(index >= 0){
-        arrayMovieAux = [];
-        for(let i = index; i<maxIndex; i++){
-            arrayMovieAux.push(arrayMovieGenre[i]);
+    if(maxIndex >= 20){
+        index -= 20;
+        if(index >= 0){
+            arrayMovieAux = [];
+            for(let i = index; i<maxIndex; i++){
+                arrayMovieAux.push(arrayMovieGenre[i]);
+            }
+            showListMovie(arrayMovieAux);
         }
-        showListMovie(arrayMovieAux);
     }
-
-    console.log(arrayMovieAux);
+    btn = 'btnP';
+    // console.log(`MINDX: ${maxIndex}, INDX: ${index}`);
 }
 
 function showListMovie (movieList){
