@@ -67,6 +67,7 @@ body{
     opacity: 0;
     visibility: hidden;
     transition: transform .4s .1s, opacity .5s, visibility .1s;
+    z-index: 100;
 }
 
 .header__avatarCircle:hover + .header__infor{

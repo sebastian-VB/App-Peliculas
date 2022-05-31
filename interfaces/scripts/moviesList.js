@@ -12,6 +12,8 @@ let sizeTotalArray, sizePage = 20, newSizeArray, index = 0, maxIndex = 0;
 let btn = '';
 let arrayMovieAux = [];
 
+window.selectMovie = selectMovie;
+
 await loadInfo();
 
 async function loadInfo(){
@@ -129,17 +131,28 @@ function showPreviousMovies(){
     // console.log(`MINDX: ${maxIndex}, INDX: ${index}`);
 }
 
+function selectMovie(idM){
+    let objectMovie;
+    let index = 0;
+    arrayMovieAux.forEach(movieID =>{
+        if(idM == movieID.id){
+            objectMovie = arrayMovieAux[index];
+        }
+        index++;
+    })
+}
+
 function showListMovie (movieList){
 
     let movies = '';
     movieList.forEach(movie =>{
         movies += `
-        <div class="main__container-card">
+        <div class="main__container-card" onclick="selectMovie(${movie.id})">
             <figure class="main__container-card-picture">
                 <img class="img" src="${imageURL}${movie.poster_path}">
             </figure>
             <div class="main__container-card-letters">
-                <h2 class="title">${movie.original_title}</h2>
+                <h2 class="title">${movie.title}</h2>
                 <h4 class="date">${movie.release_date}</h4>
             </div>
         </div>
@@ -148,5 +161,6 @@ function showListMovie (movieList){
 
     document.getElementById('container-movies').innerHTML = movies;
 }
+
 
 
