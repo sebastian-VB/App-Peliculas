@@ -66,6 +66,7 @@ h1, h2, h3, h4, p, figure{
 .main__movieInfo-img{
     width: 100%;
     height: inherit;
+    height: inherit;
     border-radius: inherit;
 }
 

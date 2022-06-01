@@ -42,7 +42,7 @@
         <section class="main__movie">
 
             <figure class="main__movieBackground">
-                <img src="https://i.blogs.es/8a6106/cartel-your-name/1366_2000.jpg" class="main__movieBackground-img">
+                <img class="main__movieBackground-img" id="backgroud_img">
             </figure>
 
             <div class="main__movieBackground-t"></div>
@@ -51,17 +51,17 @@
 
                 <div class="main__movieInfo-containerP">
                     <figure class="main__movieInfo-picture">
-                        <img class="main__movieInfo-img">
+                        <img class="main__movieInfo-img" id="poster_img">
                     </figure>
                 </div>
 
 
                 <div class="main__movieInfo-info">
-                    <h1>Titulo de la pelicula</h1>
-                    <p>Genero1, genero2, genero3</p>
-                    <div>68%</div>
+                    <h1 id="title">Titulo de la pelicula</h1>
+                    <p id="genres">Genero1, genero2, genero3</p>
+                    <div id="vote">68%</div>
                     <h3>Overview</h3>
-                    <p>
+                    <p id="overview">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolore fugiat error! Voluptate unde dolorum, exercitationem perferendis nulla sed vel quas ex quidem, obcaecati quasi explicabo mollitia ipsam itaque. Fugit.
                     </p>
                 </div>
@@ -75,6 +75,8 @@
         </section>
 
     </main>
+
+    <script src="../scripts/movie.js" type="module"></script>
 
 </body>
 </html>

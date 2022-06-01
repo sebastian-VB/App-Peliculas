@@ -2,6 +2,7 @@
 import { objectInfo } from "./getLettersAvatarUser.js";
 import {objectInfoAPI, getListMovies} from "../../data/connection/consumeApiTMDB.js";
 import {getGenre} from "./other/genre.js";
+import {saveMovie} from "../scripts/other/movieObj.js";
 
 let imageURL = `https://www.themoviedb.org/t/p/w220_and_h330_face/`;
 let arrayMovieGenre = [];
@@ -11,6 +12,7 @@ let dataLM;
 let sizeTotalArray, sizePage = 20, newSizeArray, index = 0, maxIndex = 0;
 let btn = '';
 let arrayMovieAux = [];
+let arrayMovieAllAux = [];
 
 window.selectMovie = selectMovie;
 
@@ -22,6 +24,9 @@ async function loadInfo(){
     if(getGenre().id == 1){
         document.getElementById('genreTitle').innerHTML = `Género: ${getGenre().name}`;
         showListMovie(objectInfoAPI.dataListMovie);
+        objectInfoAPI.dataListMovie.forEach(movie=>{
+            arrayMovieAllAux.push(movie);
+        });
     }
     else if(getGenre().id != 1){
         document.getElementById('genreTitle').innerHTML = `Género: ${getGenre().name}`;
@@ -44,6 +49,9 @@ document.getElementById('btn-s').addEventListener('click', async ()=>{
             pages++;
             dataLM = await getListMovies(pages);
             if(dataLM != null){
+                dataLM.results.forEach(movie=>{
+                    arrayMovieAllAux.push(movie);
+                });
                 showListMovie(dataLM.results);
             }
         }
@@ -62,6 +70,9 @@ document.getElementById('btn-a').addEventListener('click', async()=>{
             pages--;
             dataLM = await getListMovies(pages);
             if(dataLM != null){
+                dataLM.results.forEach(movie=>{
+                    arrayMovieAllAux.push(movie);
+                });
                 showListMovie(dataLM.results); 
             }
         }
@@ -132,15 +143,28 @@ function showPreviousMovies(){
 }
 
 function selectMovie(idM){
+
+    if(getGenre().id == 1){
+        arrayContentMovie(arrayMovieAllAux, idM);
+    }
+    else{
+        arrayContentMovie(arrayMovieAux, idM);
+    }
+    location.assign('../public/movie.html');
+}
+
+function arrayContentMovie(arrayConten, idM){
     let objectMovie;
     let index = 0;
-    arrayMovieAux.forEach(movieID =>{
+    arrayConten.forEach(movieID =>{
         if(idM == movieID.id){
-            objectMovie = arrayMovieAux[index];
+            objectMovie = arrayConten[index];
+            console.log(objectMovie.title);
+            saveMovie(objectMovie);
         }
         index++;
-    })
-}
+    }) 
+};
 
 function showListMovie (movieList){
 
