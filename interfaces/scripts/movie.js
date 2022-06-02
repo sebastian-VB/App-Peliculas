@@ -5,6 +5,8 @@ import {objectInfoAPI, getCastMovie} from "../../data/connection/consumeApiTMDB.
 
 let imageURL_poster = `https://www.themoviedb.org/t/p/w220_and_h330_face`;
 let imageURL_backgroud = `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces`;
+let imageURL_actor  = `https://www.themoviedb.org/t/p/w138_and_h175_face/9SqQcvVUPUziK37i5jIeUoqSOMB.jpg`;
+let imageURL_noImage = `https://www.eatgreenearth.com/wp-content/themes/eatgreen/images/no-image.jpg`;
 let movie;
 
 

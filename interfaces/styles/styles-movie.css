@@ -96,6 +96,84 @@ h1, h2, h3, h4, p, figure{
 
 .main__movieInfo-info p:nth-child(5){ font-size: 18px; line-height: 1.5;  text-align: justify;}
 
+.main__cast-container{
+    width: 100%;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    padding: 10px 15px 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.main__cast-container-info{
+    width: 90%; 
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+}
+
+.main__cast-container .title{ margin-bottom: 20px; margin-left: 3%;}
+
+.main__cast-container-actor{
+    background-color: #fff;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    margin-right: 25PX;
+    width: 170px;
+    height: 282px;
+    box-shadow: 5px 1px 10px rgb(119, 118, 118);
+}
+
+.main__cast-container-actor .container-img .img{
+    width: 100%;
+    height: 216px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.main__cast-container-actor .name{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.main__cast-container-actor .name:hover{
+    color: rgb(121, 117, 117);
+}
+
+.main__cast-container-actor .character{
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.carousel__anterior,
+.carousel__siguiente{
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 40px;
+	border: none;
+	top: calc(50%);
+	cursor: pointer;
+	line-height: 30px;
+	text-align: center;
+	background: none;
+	color: #000;
+	opacity: 30%;
+}
+
+.carousel__anterior{ left: 40px; }
+
+.carousel__siguiente{ right: 40px; }
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover{ opacity: 100%; }
+
+
+
 @media (max-width: 1230px){
 
     .main__movieInfo-picture{
