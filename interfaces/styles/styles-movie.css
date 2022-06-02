@@ -123,12 +123,12 @@ h1, h2, h3, h4, p, figure{
     padding-bottom: 20px;
     margin-right: 25PX;
     width: 170px;
-    height: 282px;
+    height: 320px;
     box-shadow: 5px 1px 10px rgb(119, 118, 118);
 }
 
 .main__cast-container-actor .container-img .img{
-    width: 100%;
+    width: 170px;
     height: 216px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -147,6 +147,7 @@ h1, h2, h3, h4, p, figure{
     font-size: 15px;
     font-weight: 400;
     margin-top: 5px;
+    padding: 0 3px;
 }
 
 .carousel__anterior,

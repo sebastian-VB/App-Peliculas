@@ -5,7 +5,7 @@ import {objectInfoAPI, getCastMovie} from "../../data/connection/consumeApiTMDB.
 
 let imageURL_poster = `https://www.themoviedb.org/t/p/w220_and_h330_face`;
 let imageURL_backgroud = `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces`;
-let imageURL_actor  = `https://www.themoviedb.org/t/p/w138_and_h175_face/9SqQcvVUPUziK37i5jIeUoqSOMB.jpg`;
+let imageURL_actor  = `https://www.themoviedb.org/t/p/w138_and_h175_face`;
 let imageURL_noImage = `https://www.eatgreenearth.com/wp-content/themes/eatgreen/images/no-image.jpg`;
 let movie;
 
@@ -63,10 +63,37 @@ async function showInfoMovie(){
         document.getElementById('overview').innerHTML = movie.overview;
         document.getElementById('genres').innerHTML = showGenres(movie.genre_ids);
 
-        const cast  = await getCastMovie(movie.id);
-        console.log(cast.cast);
+        const castMovie  = await getCastMovie(movie.id);
+        showCast(castMovie);
     }
     console.log(movie);
+}
+
+function showCast(castMovie){
+    console.log(castMovie.cast);
+
+    let personMovie = '';
+    let profile_path = '';
+
+    castMovie.cast.forEach(person =>{
+        if(person.profile_path != null){
+            profile_path = `${imageURL_actor}${person.profile_path}`;
+        }
+        else{
+            profile_path = imageURL_noImage;
+        }
+        personMovie+= `
+        <div class="main__cast-container-actor">
+            <div class="container-img">
+                <img class="img" src="${profile_path}">
+            </div>
+            <h2 class="name">${person.name}</h2>
+            <h4 class="character">${person.character}</h4>
+        </div>
+        `;
+    });
+
+    document.getElementById('carousel').innerHTML = personMovie;
 }
 
 
