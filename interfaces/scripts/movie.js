@@ -1,7 +1,7 @@
 
 import { objectInfo } from "./getLettersAvatarUser.js";
 import {getMovie} from "../scripts/other/movieObj.js";
-import {objectInfoAPI} from "../../data/connection/consumeApiTMDB.js";
+import {objectInfoAPI, getCastMovie} from "../../data/connection/consumeApiTMDB.js";
 
 let imageURL_poster = `https://www.themoviedb.org/t/p/w220_and_h330_face`;
 let imageURL_backgroud = `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces`;
@@ -48,7 +48,7 @@ function showGenres (listGenres){
     return genres;
 }
 
-function showInfoMovie(){
+async function showInfoMovie(){
 
     if(getMovie().movieObject != null){
 
@@ -60,7 +60,12 @@ function showInfoMovie(){
         document.getElementById('vote').innerHTML = `${(movie.vote_average*10)}%`;
         document.getElementById('overview').innerHTML = movie.overview;
         document.getElementById('genres').innerHTML = showGenres(movie.genre_ids);
+
+        const cast  = await getCastMovie(movie.id);
+        console.log(cast.cast);
     }
     console.log(movie);
 }
+
+
 

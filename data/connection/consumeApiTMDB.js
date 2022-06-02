@@ -3,6 +3,7 @@ const partURL = 'https://api.themoviedb.org/3/';
 
 let data;
 let dataListM;
+let dataCastMovie = [];
 
 const loadingGenresMovies = async ()=>{
 
@@ -55,6 +56,31 @@ export async function getListMovies (page){
 }
 
 await getListMovies(1);
+
+export async function getCastMovie(movieID){
+
+    try{
+
+        const answer = await fetch(`${partURL}movie/${movieID}/credits?api_key=3d06cb63991df2c2b2e0c31ec5c593bc&language=en-US`);
+
+        if(answer.status == 200){
+            return dataCastMovie = await answer.json();
+        }
+        else if(answer.status == 401){
+            console.log('error en la peticion');
+            return null;
+        }   
+        else if(answer.status == 404){
+            console.log('actores no existen');
+            return null;
+        } 
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+// await getCastMovie(634649);
 
 export const objectInfoAPI = {
     dataGenres: data.genres,
