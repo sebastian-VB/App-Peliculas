@@ -8,6 +8,9 @@ let imageURL_backgroud = `https://www.themoviedb.org/t/p/w1920_and_h800_multi_fa
 let imageURL_actor  = `https://www.themoviedb.org/t/p/w138_and_h175_face`;
 let imageURL_noImage = `https://www.eatgreenearth.com/wp-content/themes/eatgreen/images/no-image.jpg`;
 let movie;
+let castMovie;
+let arrayActors = [];
+let indexM = 0, indexMin = 0, lengthArray, indexMinAux;
 
 
 loadInfo();
@@ -63,19 +66,69 @@ async function showInfoMovie(){
         document.getElementById('overview').innerHTML = movie.overview;
         document.getElementById('genres').innerHTML = showGenres(movie.genre_ids);
 
-        const castMovie  = await getCastMovie(movie.id);
-        showCast(castMovie);
+        castMovie  = await getCastMovie(movie.id);
+        showActorsNext();
     }
-    console.log(movie);
+    
 }
 
-function showCast(castMovie){
-    console.log(castMovie.cast);
+document.getElementById('btnPrevius').addEventListener('click',()=>{
+    console.log('btnP');
+    showActorsPrevius();
+    
+});
+
+document.getElementById('btnNext').addEventListener('click',()=>{
+    console.log('btnN');
+    if(indexMinAux < lengthArray){
+        showActorsNext();
+    }
+});
+
+function showActorsNext(){
+
+    lengthArray = castMovie.cast.length;
+    indexMin = indexM;
+    
+    if((lengthArray - indexM) < 8 ){
+        indexM = lengthArray;
+    }
+    else{
+        indexM = indexMin + 8
+    }
+    arrayActors = [];
+    
+    for(let i = indexMin; i<indexM; i++){
+        arrayActors.push(castMovie.cast[i]);
+    }
+
+    indexMinAux = indexM;
+    showCast(arrayActors);
+
+}
+
+function showActorsPrevius(){
+
+    if(indexMin > 0){
+
+        indexM = indexMin;
+        indexMin -= 8;
+        arrayActors = [];
+        for(let i = indexMin; i<indexM; i++){
+
+            arrayActors.push(castMovie.cast[i]);
+        }
+        showCast(arrayActors);
+        indexMinAux = indexM;
+    }
+}
+
+function showCast(arrayA){
 
     let personMovie = '';
     let profile_path = '';
 
-    castMovie.cast.forEach(person =>{
+    arrayA.forEach(person =>{
         if(person.profile_path != null){
             profile_path = `${imageURL_actor}${person.profile_path}`;
         }
@@ -94,6 +147,7 @@ function showCast(castMovie){
     });
 
     document.getElementById('carousel').innerHTML = personMovie;
+    
 }
 
 

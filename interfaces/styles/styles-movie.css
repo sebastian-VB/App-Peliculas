@@ -107,10 +107,12 @@ h1, h2, h3, h4, p, figure{
 }
 
 .main__cast-container-info{
-    width: 90%; 
+    width: 93.5%; 
     margin: 0 auto; 
+    padding: 10px 0;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .main__cast-container .title{ margin-bottom: 20px; margin-left: 3%;}
@@ -166,9 +168,9 @@ h1, h2, h3, h4, p, figure{
 	opacity: 30%;
 }
 
-.carousel__anterior{ left: 40px; }
+.carousel__anterior{ left: 30px; }
 
-.carousel__siguiente{ right: 40px; }
+.carousel__siguiente{ right: 30px; }
 
 .carousel__anterior:hover,
 .carousel__siguiente:hover{ opacity: 100%; }
